@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IFSPStore.Domain.Entities
 {
-    public class Cidade : IBaseRepository<int>
+    public class Cidade : BaseEntity<int>
     {
         public Cidade()
         {

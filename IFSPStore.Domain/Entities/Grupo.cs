@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IFSPStore.Domain.Entities
 {
-    public class Grupo : IBaseRepository<int>
+    public class Grupo : BaseEntity<int>
     {
         public Grupo()
         {

@@ -18,6 +18,7 @@ namespace IFSPStore.Repository.Mapping
             builder.Property(x => x.DataCompra);
             builder.Property(x => x.UnidadeVenda)
                 .HasMaxLength(10);
+
             builder.HasOne(x => x.Grupo)
                 .WithMany()
                 .HasConstraintName("nome_chave_estrangeira");

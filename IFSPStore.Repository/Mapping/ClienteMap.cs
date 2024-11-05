@@ -11,19 +11,22 @@ namespace IFSPStore.Repository.Mapping
         {
             builder.ToTable("Cliente");
 
-            builder.HasKey(x => x.Id);
+            builder.HasKey();
 
             builder.Property(x => x.Nome)
                 .IsRequired()
                 .HasColumnType("varchar(100)");
             builder.Property(x => x.Endereco)
                 .IsRequired();
-            builder.Property(x => x.Documento)
-                .IsRequired();
             builder.Property(x => x.Bairro)
+                .IsRequired();
+            builder.Property(x => x.Documento)
                 .IsRequired();
             builder.Property( x => x.Cidade)
                 .IsRequired();
+
+            builder.HasOne(x => x.Cidade)
+                .WithOne();
 
 
 

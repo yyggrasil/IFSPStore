@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IFSPStore.Domain.Entities
 {
-    public class Venda : IBaseRepository<int>
+    public class Venda : BaseEntity<int>
     {
         public Venda()
         {
@@ -18,6 +18,7 @@ namespace IFSPStore.Domain.Entities
         // : base(id) -> A atribuição da variável Id é realizada na Classe BaseEntity
         public Venda(int id, List<VendaItem> items, DateTime data, float valortotal, Usuario? usuario, Cliente? cliente) : base(id)
         {
+            Id = id;
             Data = data;
             ValorTotal = valortotal;
             Usuario = usuario;
@@ -32,7 +33,7 @@ namespace IFSPStore.Domain.Entities
         public virtual List<VendaItem> Items { get; set; }
     }
 
-    public class VendaItem : IBaseRepository<int>
+    public class VendaItem : BaseEntity<int>
     {
         public VendaItem()
         {
