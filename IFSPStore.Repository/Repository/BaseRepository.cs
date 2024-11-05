@@ -13,24 +13,31 @@ namespace IFSPStore.Repository.Repository
 
         public void AtachObject(object obj)
         {
-            throw new NotImplementedException();
+            _mySqlcontext.Attach(obj);
         }
 
         public void ClearChangeTracker()
         {
-            throw new NotImplementedException();
+            _mySqlcontext.ChangeTracker.Clear();
         }
 
         public void Delete(TEntity entity)
         {
-            _mySqlcontext.Set<TEntity>().Remove(Select(id));
+            _mySqlcontext.Set<TEntity>().Remove(Select(entity));
         }
 
         public void Insert(TEntity entity)
         {
-            throw new NotImplementedException();
+            _mySqlcontext.Set<TEntity>().Add(entity);
+            _mySqlcontext.SaveChanges();
         }
 
+
+        public void Update(TEntity entity)
+        {
+            _mySqlcontext.Entry(entity).State = EntityState.Modified;
+            _mySqlcontext.SaveChanges();
+        }
         public IList<TEntity> Select(IList<string>? includes = null)
         {
             var dbContext = _mySqlcontext.Set<TEntity>().AsQueryable();
@@ -55,11 +62,6 @@ namespace IFSPStore.Repository.Repository
                 }
             }
             return dbContext.ToList().Find(x => x.Id == (int)id);
-        }
-
-        public void Update(TEntity entity)
-        {
-            throw new NotImplementedException();
         }
     }
 }
