@@ -3,12 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IFSPStore.Domain", "IFSPStore.Domain\IFSPStore.Domain.csproj", "{37316CD3-E942-4606-A324-3AE87F4C34BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IFSPStore.Domain", "IFSPStore.Domain\IFSPStore.Domain.csproj", "{37316CD3-E942-4606-A324-3AE87F4C34BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IFSPStore.Test", "IFSPStore.Test\IFSPStore.Test.csproj", "{A006C73F-5D0A-42C8-BE2D-58041926C825}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IFSPStore.Test", "IFSPStore.Test\IFSPStore.Test.csproj", "{A006C73F-5D0A-42C8-BE2D-58041926C825}"
 	ProjectSection(ProjectDependencies) = postProject
 		{37316CD3-E942-4606-A324-3AE87F4C34BF} = {37316CD3-E942-4606-A324-3AE87F4C34BF}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IFSPStore.Repository", "IFSPStore.Repository\IFSPStore.Repository.csproj", "{D040C83E-ACDC-49D9-9D08-E88320D84D85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +26,10 @@ Global
 		{A006C73F-5D0A-42C8-BE2D-58041926C825}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A006C73F-5D0A-42C8-BE2D-58041926C825}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A006C73F-5D0A-42C8-BE2D-58041926C825}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D040C83E-ACDC-49D9-9D08-E88320D84D85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D040C83E-ACDC-49D9-9D08-E88320D84D85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D040C83E-ACDC-49D9-9D08-E88320D84D85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D040C83E-ACDC-49D9-9D08-E88320D84D85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

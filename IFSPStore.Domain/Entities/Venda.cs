@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IFSPStore.Domain.Entities
 {
-    public class Venda : BaseEntity<int>
+    public class Venda : IBaseRepository<int>
     {
         public Venda()
         {
@@ -32,7 +32,7 @@ namespace IFSPStore.Domain.Entities
         public virtual List<VendaItem> Items { get; set; }
     }
 
-    public class VendaItem : BaseEntity<int>
+    public class VendaItem : IBaseRepository<int>
     {
         public VendaItem()
         {

@@ -9,7 +9,7 @@ namespace IFSPStore.Domain.Base
     // Abstract Class: Classe não instanciável (Modelo/Herança para outras classes)
     // Class: Modelo de Objeto
     // <TID>: Tipo de Dado do ID
-    public abstract class BaseEntity<TID>
+    public abstract class BaseEntity<TID> : IBaseEntity
     {
         protected BaseEntity()
         {
