@@ -9,27 +9,50 @@ namespace IFSPStore.Repository.Mapping
     {
         public void Configure(EntityTypeBuilder<Cliente> builder)
         {
-            builder.ToTable("Cliente");
+            // Define a tabela e a chave primária
+            builder.ToTable("Cliente", "ifspStoreBD");
+            builder.HasKey(c => new { c.Id, c.Cidade }); // Chave composta
 
-            builder.HasKey();
+            // Mapeamento das propriedades
+            builder.Property(c => c.Id)
+                   .HasColumnName("id")
+                   .IsRequired()
+                   .ValueGeneratedOnAdd();
 
-            builder.Property(x => x.Nome)
-                .IsRequired()
-                .HasColumnType("varchar(100)");
-            builder.Property(x => x.Endereco)
-                .IsRequired();
-            builder.Property(x => x.Bairro)
-                .IsRequired();
-            builder.Property(x => x.Documento)
-                .IsRequired();
-            builder.Property( x => x.Cidade)
-                .IsRequired();
+            builder.Property(c => c.Nome)
+                   .HasColumnName("Nome")
+                   .HasMaxLength(100)
+                   .IsRequired(false);
 
-            builder.HasOne(x => x.Cidade)
-                .WithOne();
+            builder.Property(c => c.Endereco)
+                   .HasColumnName("Endereco")
+                   .HasMaxLength(100)
+                   .IsRequired(false);
 
+            builder.Property(c => c.Documento)
+                   .HasColumnName("Documento")
+                   .HasMaxLength(45)
+                   .IsRequired(false);
 
+            builder.Property(c => c.Bairro)
+                   .HasColumnName("Bairro")
+                   .HasMaxLength(45)
+                   .IsRequired(false);
 
+            builder.Property(c => c.Cidade)
+                   .HasColumnName("Cidade")
+                   .HasMaxLength(45)
+                   .IsRequired(false);
+
+            builder.Property(c => c.Cidade)
+                   .HasColumnName("idCidade")
+                   .IsRequired();
+
+            // Configuração do relacionamento com Cidade
+            builder.HasOne(c => c.Cidade)
+                   .WithMany()
+                   .HasForeignKey(c => c.Cidade)
+                   .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

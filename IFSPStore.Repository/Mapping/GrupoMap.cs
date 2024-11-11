@@ -8,16 +8,20 @@ namespace IFSPStore.Repository.Mapping
     {
         public void Configure(EntityTypeBuilder<Grupo> builder)
         {
-            // define o nome da tabela
-            builder.ToTable("Abobrinha");
-            // Define a chave primária
-            builder.HasKey(prop => prop.Id);
+            // Define a tabela e a chave primária
+            builder.ToTable("Grupo", "ifspStoreBD");
+            builder.HasKey(g => g.Id);
 
-            builder.Property(prop => prop.Nome)
-                .HasColumnName("Melancia")
-                .IsRequired()
-                .HasMaxLength(50);
-                //.HasColumnType("varchar(50)");
+            // Mapeamento das propriedades
+            builder.Property(g => g.Id)
+                   .HasColumnName("id")
+                   .IsRequired()
+                   .ValueGeneratedOnAdd();
+
+            builder.Property(g => g.Nome)
+                   .HasColumnName("Nome")
+                   .HasMaxLength(45)
+                   .IsRequired(false);
         }
     }
 }

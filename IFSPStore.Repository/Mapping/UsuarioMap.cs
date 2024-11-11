@@ -9,19 +9,37 @@ namespace IFSPStore.Repository.Mapping
     {
         public void Configure(EntityTypeBuilder<Usuario> builder)
         {
-            builder.ToTable("Usuario");
+            builder.ToTable("Usuario", "ifspStoreBD");
 
             builder.HasKey(x => x.Id);
 
-            builder.Property(x => x.Nome);
-            builder.Property(x => x.Senha);
-            builder.Property(x => x.Login);
-            builder.Property(x => x.Email);
-            builder.Property(x => x.DataCadastro);
-            builder.Property(x => x.DataLogin);
-            builder.Property(x => x.Ativo);
+            builder.Property(u => u.Senha)
+                   .HasColumnName("Senha")
+                   .HasMaxLength(45)
+                   .IsRequired(false);
 
+            builder.Property(u => u.Login)
+                   .HasColumnName("Login")
+                   .HasMaxLength(45)
+                   .IsRequired(false);
 
+            builder.Property(u => u.DataCadastro)
+                   .HasColumnName("DataCadastro")
+                   .HasColumnType("timestamp")
+                   .IsRequired(false);
+
+            builder.Property(u => u.DataLogin)
+                   .HasColumnName("DataLogin")
+                   .HasColumnType("timestamp")
+                   .IsRequired(false);
+
+            builder.Property(u => u.Ativo)
+                   .HasColumnName("Ativo")
+                   .HasColumnType("binary(1)")
+                   .IsRequired(false);
         }
+
+
+    }
     }
 }

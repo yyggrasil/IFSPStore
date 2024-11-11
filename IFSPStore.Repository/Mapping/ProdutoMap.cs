@@ -8,20 +8,46 @@ namespace IFSPStore.Repository.Mapping
     {
         public void Configure(EntityTypeBuilder<Produto> builder)
         {
-            builder.ToTable("produto");
-            builder.HasKey(x => x.Id);
-            builder.Property(x => x.Nome)
-                .IsRequired()
-                .HasMaxLength(255);
-            builder.Property(x => x.Preco);
-            builder.Property(x => x.Quantidade);
-            builder.Property(x => x.DataCompra);
-            builder.Property(x => x.UnidadeVenda)
-                .HasMaxLength(10);
+            // Define a tabela e a chave primária
+            builder.ToTable("Produto", "ifspStoreBD");
+            builder.HasKey(p => p.Id);
 
-            builder.HasOne(x => x.Grupo)
-                .WithMany()
-                .HasConstraintName("nome_chave_estrangeira");
+            // Mapeamento das propriedades
+            builder.Property(p => p.Id)
+                   .HasColumnName("id")
+                   .IsRequired()
+                   .ValueGeneratedOnAdd();
+
+            builder.Property(p => p.Nome)
+                   .HasColumnName("Nome")
+                   .HasMaxLength(100)
+                   .IsRequired(false);
+
+            builder.Property(p => p.Preco)
+                   .HasColumnName("Preço")
+                   .HasColumnType("decimal(10,2)")
+                   .IsRequired(false);
+
+            builder.Property(p => p.Quantidade)
+                   .HasColumnName("Quantidade")
+                   .IsRequired(false);
+
+            builder.Property(p => p.DataCompra)
+                   .HasColumnName("DataCompra")
+                   .HasColumnType("date")
+                   .IsRequired(false);
+
+            builder.Property(p => p.UnidadeVenda)
+                   .HasColumnName("UnidadeVenda")
+                   .HasMaxLength(10)
+                   .IsRequired(false);
+
+            builder.Property(p => p.Grupo)
+                   .HasColumnName("idGrupo")
+                   .IsRequired();
+
+            // Configuração do relacionamento com Grupo
+            builder.HasOne(p => p.Grupo);
         }
     }
 }
