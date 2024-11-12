@@ -12,7 +12,7 @@ namespace IFSPStore.Domain.Base
         void AtachObject(object obj);
         void Insert(TEntity entity);
         void Update(TEntity entity);
-        void Delete(TEntity entity);
+        void Delete(object id);
         IList<TEntity> Select(IList<string>? includes = null);
         TEntity Select(object id, IList<string>? includes = null);
     }

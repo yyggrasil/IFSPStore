@@ -19,15 +19,15 @@ namespace IFSPStore.Service.Validators
                 .Matches(@"[A-Z]+").WithMessage("A senha deve conter uma letra maiúscula")
                 .Matches(@"[a-z]+").WithMessage("A senha deve conter uma letra minúscula")
                 .Matches(@"[0-9]+").WithMessage("A senha deve conter um número")
-                .Matches(@"[\!\@\#\$\%\¨\'\&\*\(\)\-\_\+\=\/\\\?\°\~\|\^\]\[\}\{\º\ª]+").WithMessage("A senha deve conter um caracter especial")
+                .Matches(@"[\!\@\#\$\%\¨\'\&\*\(\)\-\_\+\=\/\\\?\°\~\|\^\]\[\}\{\º\ª]+")
+                    .WithMessage("A senha deve conter um caracter especial")
                 .MaximumLength(45).WithMessage("O login do usuário não pode exceder 45 caracteres.");
 
             // Valida o campo Senha
             RuleFor(u => u.Senha)
                 .NotEmpty().WithMessage("A senha do usuário é obrigatória.")
                 .MinimumLength(8).WithMessage("A senha do usuário deve ter pelo menos 8 caracteres.")
-                .MaximumLength(45).WithMessage("A senha do usuário não pode exceder 45 caracteres.")
-                ;
+                .MaximumLength(45).WithMessage("A senha do usuário não pode exceder 45 caracteres.");
 
             // Valida o campo DataCadastro
             RuleFor(u => u.DataCadastro)
