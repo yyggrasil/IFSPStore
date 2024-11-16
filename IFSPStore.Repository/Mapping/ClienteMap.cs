@@ -10,49 +10,33 @@ namespace IFSPStore.Repository.Mapping
         public void Configure(EntityTypeBuilder<Cliente> builder)
         {
             // Define a tabela e a chave primária
-            builder.ToTable("Cliente", "ifspStoreBD");
-            builder.HasKey(c => new { c.Id, c.Cidade }); // Chave composta
+            builder.ToTable("Clientes");
+            builder.HasKey(c => c.Id);
 
             // Mapeamento das propriedades
-            builder.Property(c => c.Id)
-                   .HasColumnName("id")
-                   .IsRequired()
-                   .ValueGeneratedOnAdd();
 
             builder.Property(c => c.Nome)
                    .HasColumnName("Nome")
                    .HasMaxLength(100)
-                   .IsRequired(false);
+                   .IsRequired();
 
             builder.Property(c => c.Endereco)
                    .HasColumnName("Endereco")
                    .HasMaxLength(100)
-                   .IsRequired(false);
+                   .IsRequired();
 
             builder.Property(c => c.Documento)
                    .HasColumnName("Documento")
                    .HasMaxLength(45)
-                   .IsRequired(false);
+                   .IsRequired();
 
             builder.Property(c => c.Bairro)
                    .HasColumnName("Bairro")
                    .HasMaxLength(45)
-                   .IsRequired(false);
-
-            builder.Property(c => c.Cidade)
-                   .HasColumnName("Cidade")
-                   .HasMaxLength(45)
-                   .IsRequired(false);
-
-            builder.Property(c => c.Cidade)
-                   .HasColumnName("idCidade")
-                   .IsRequired();
+                   .IsRequired();           
 
             // Configuração do relacionamento com Cidade
-            builder.HasOne(c => c.Cidade)
-                   .WithMany()
-                   .HasForeignKey(c => c.Cidade)
-                   .OnDelete(DeleteBehavior.NoAction);
+            builder.HasOne(c => c.Cidade);
         }
     }
 }

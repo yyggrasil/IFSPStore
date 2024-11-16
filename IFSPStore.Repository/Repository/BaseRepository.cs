@@ -11,21 +11,14 @@ namespace IFSPStore.Repository.Repository
     {
         protected readonly MySqlContext _mySqlcontext;
 
-        public void AtachObject(object obj)
+        public BaseRepository(MySqlContext mySqlcontext)
         {
-            _mySqlcontext.Attach(obj);
+            _mySqlcontext = mySqlcontext;
         }
-
         public void ClearChangeTracker()
         {
             _mySqlcontext.ChangeTracker.Clear();
         }
-
-        public void Delete(TEntity entity)
-        {
-            _mySqlcontext.Set<TEntity>().Remove(Select(entity));
-        }
-
         public void Insert(TEntity entity)
         {
             _mySqlcontext.Set<TEntity>().Add(entity);
@@ -62,6 +55,17 @@ namespace IFSPStore.Repository.Repository
                 }
             }
             return dbContext.ToList().Find(x => x.Id == (int)id);
+        }
+
+        public void AtachObject(object obj)
+        {
+            _mySqlcontext.Attach(obj);
+        }
+
+        public void Delete(object id)
+        {
+            _mySqlcontext.Set<TEntity>().Remove(Select(id));
+            _mySqlcontext.SaveChanges();
         }
     }
 }

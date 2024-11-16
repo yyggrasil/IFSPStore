@@ -4,7 +4,7 @@ using IFSPStore.Domain.Entities;
 
 namespace IFSPStore.Service.Validators
 {
-    internal class ProdutoValidator : AbstractValidator<Produto>
+    public class ProdutoValidator : AbstractValidator<Produto>
     {
         public ProdutoValidator() 
         {
@@ -16,8 +16,7 @@ namespace IFSPStore.Service.Validators
 
             // Valida o campo Preço
             RuleFor(p => p.Preco)
-                .GreaterThan(0).WithMessage("O preço do produto deve ser maior que zero.")
-                .ScalePrecision(2, 10).WithMessage("O preço do produto deve ter até 10 dígitos com 2 casas decimais.");
+                .GreaterThan(0).WithMessage("O preço do produto deve ser maior que zero.");
 
             // Valida o campo Quantidade
             RuleFor(p => p.Quantidade)
@@ -25,7 +24,7 @@ namespace IFSPStore.Service.Validators
 
             // Valida o campo DataCompra
             RuleFor(p => p.DataCompra)
-                .LessThanOrEqualTo(DateTime.Today).WithMessage("A data de compra não pode ser uma data futura.")
+                .LessThanOrEqualTo(DateTime.Now).WithMessage("A data de compra não pode ser uma data futura.")
                 .When(p => p.DataCompra.HasValue);
 
             // Valida o campo UnidadeVenda

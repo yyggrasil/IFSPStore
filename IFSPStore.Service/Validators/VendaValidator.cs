@@ -4,7 +4,7 @@ using IFSPStore.Domain.Entities;
 
 namespace IFSPStore.Service.Validators
 {
-    internal class VendaValidator : AbstractValidator<Venda>
+    public class VendaValidator : AbstractValidator<Venda>
     {
         public VendaValidator() 
         {
@@ -20,10 +20,6 @@ namespace IFSPStore.Service.Validators
             // Valida o campo IdCliente (campo obrigatório)
             RuleFor(v => v.Cliente)
                 .NotEmpty().WithMessage("O cliente da venda é obrigatório.");
-
-            // Valida o campo IdUsuario (campo obrigatório)
-            RuleFor(v => v.Usuario)
-                .NotEmpty().WithMessage("O usuário que realizou a venda é obrigatório.");
         }
     }
 }

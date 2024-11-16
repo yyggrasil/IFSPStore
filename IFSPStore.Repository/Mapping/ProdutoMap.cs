@@ -9,41 +9,32 @@ namespace IFSPStore.Repository.Mapping
         public void Configure(EntityTypeBuilder<Produto> builder)
         {
             // Define a tabela e a chave primária
-            builder.ToTable("Produto", "ifspStoreBD");
+            builder.ToTable("Produtos");
             builder.HasKey(p => p.Id);
 
             // Mapeamento das propriedades
-            builder.Property(p => p.Id)
-                   .HasColumnName("id")
-                   .IsRequired()
-                   .ValueGeneratedOnAdd();
-
             builder.Property(p => p.Nome)
                    .HasColumnName("Nome")
                    .HasMaxLength(100)
-                   .IsRequired(false);
+                   .IsRequired();
 
             builder.Property(p => p.Preco)
-                   .HasColumnName("Preço")
+                   .HasColumnName("Preco")
                    .HasColumnType("decimal(10,2)")
-                   .IsRequired(false);
+                   .IsRequired();
 
             builder.Property(p => p.Quantidade)
                    .HasColumnName("Quantidade")
-                   .IsRequired(false);
+                   .IsRequired();
 
             builder.Property(p => p.DataCompra)
                    .HasColumnName("DataCompra")
                    .HasColumnType("date")
-                   .IsRequired(false);
+                   .IsRequired();
 
             builder.Property(p => p.UnidadeVenda)
                    .HasColumnName("UnidadeVenda")
                    .HasMaxLength(10)
-                   .IsRequired(false);
-
-            builder.Property(p => p.Grupo)
-                   .HasColumnName("idGrupo")
                    .IsRequired();
 
             // Configuração do relacionamento com Grupo

@@ -4,7 +4,7 @@ using IFSPStore.Domain.Entities;
 
 namespace IFSPStore.Service.Validators
 {
-    internal class GrupoValidator : AbstractValidator<Grupo>
+    public class GrupoValidator : AbstractValidator<Grupo>
     {
         public GrupoValidator() 
         {

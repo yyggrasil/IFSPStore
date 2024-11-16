@@ -9,7 +9,7 @@ namespace IFSPStore.Repository.Mapping
     {
         public void Configure(EntityTypeBuilder<Venda> builder)
         {
-            builder.ToTable("Venda");
+            builder.ToTable("Vendas");
 
             builder.HasKey(prop => prop.Id);
 
@@ -31,7 +31,7 @@ namespace IFSPStore.Repository.Mapping
     {
         public void Configure(EntityTypeBuilder<VendaItem> builder)
         {
-            builder.ToTable("VendaItem");
+            builder.ToTable("VendaItens");
 
             builder.HasKey(prop => prop.Id);
 

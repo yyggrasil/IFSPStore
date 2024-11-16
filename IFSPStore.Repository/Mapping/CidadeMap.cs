@@ -9,19 +9,19 @@ namespace IFSPStore.Repository.Mapping
         public void Configure(EntityTypeBuilder<Cidade> builder)
         {
             // Define a tabela e a chave primária
-            builder.ToTable("Cidade", "ifspStoreBD");
+            builder.ToTable("Cidades");
             builder.HasKey(c => c.Id);
 
             // Mapeamento das propriedades
             builder.Property(c => c.Nome)
                    .HasColumnName("Nome")
                    .HasMaxLength(100)
-                   .IsRequired(false);
+                   .IsRequired();
 
             builder.Property(c => c.Estado)
                    .HasColumnName("Estado")
                    .HasMaxLength(2)
-                   .IsRequired(false);
+                   .IsRequired();
         }
     }
 }
