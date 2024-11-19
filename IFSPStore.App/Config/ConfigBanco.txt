@@ -1,0 +1,1 @@
+﻿Server=localhost;Port=3306;DataBase=IFSPStoreService;Uid=root;Pwd=admin
