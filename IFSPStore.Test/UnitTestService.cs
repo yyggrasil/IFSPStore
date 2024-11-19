@@ -237,20 +237,24 @@ namespace IFSPStore.Test
         public void TestInsertVenda()
         {
             var sp = ConfigureServices();
-            var vendaService = sp.GetService<IBaseService<Venda>>();
+
+            var usuarioService = sp.GetService<IBaseService<Usuario>>();
+            var vendaService   = sp.GetService<IBaseService<Venda>>();
             var produtoService = sp.GetService<IBaseService<Produto>>();
             var clienteService = sp.GetService<IBaseService<Cliente>>();
 
             var produto = produtoService.get<Produto>().FirstOrDefault(g => g.Id == 1);
             var cliente = clienteService.get<Cliente>().FirstOrDefault(c => c.Id == 1);
-            
+            var usuario = usuarioService.get<Usuario>().FirstOrDefault(u => u.Id == 1);
+               
 
             
             var venda = new Venda
             {
                 Data = DateTime.Now,
                 ValorTotal = 100,
-                Cliente = cliente
+                Cliente = cliente,
+                Usuario = usuario
             };
 
             venda.Items.Add(new VendaItem {
